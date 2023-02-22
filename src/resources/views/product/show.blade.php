@@ -10,10 +10,12 @@
     <div class="col-md-8">
       <div class="card-body">
         <h5 class="card-title">
-           {{ $viewData["product"]["name"] }}
+           {{ $viewData['product']['name'] }}
         </h5>
-        <p class="card-text">{{ $viewData["product"]["description"] }}</p>
         <p class="card-text">Price: {{ $viewData["product"]["price"] }}</p>
+        @foreach($viewData["product"]->comments as $comment)
+          - {{ $comment->getDescription() }}<br />
+        @endforeach
       </div>
     </div>
   </div>
