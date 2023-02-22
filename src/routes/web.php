@@ -27,19 +27,7 @@ Route::get('/about', function () {
       ->with('author', $author);
 })->name('home.about');
 
-Route::get('/contact', function () {
-    $data1 = 'Contact me - Online Store';
-    $data2 = 'Contact me';
-    $email = 'fakeemail@gmail.com';
-    $address = 'Cr 43a # 45-32';
-    $phone = '392 23219231';
-
-    return view('home.contact')->with('title', $data1)
-      ->with('subtitle', $data2)
-      ->with('email', $email)
-      ->with('address', $address)
-      ->with('phone', $phone);
-})->name('home.contact');
+Route::get('/contact', 'App\Http\Controllers\ContactController@index')->name('contact.index');
 
 Route::get('/products', 'App\Http\Controllers\ProductController@index')->name('product.index');
 
