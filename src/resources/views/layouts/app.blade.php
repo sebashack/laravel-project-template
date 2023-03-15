@@ -20,6 +20,7 @@
         <div class="navbar-nav ms-auto">
           <a class="nav-link active" href="{{ route('home.index') }}">Home</a>
           <a class="nav-link active" href="{{ route('flight.create') }}">Register flight</a>
+          <a class="nav-link active" href="{{ route('flight.index') }}">List flights</a>
         </div>
       </div>
     </div>

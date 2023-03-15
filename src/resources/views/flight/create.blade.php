@@ -23,6 +23,7 @@
 
             <form method="POST" action="{{ route('flight.save') }}">
               @csrf
+              <input type="text" class="form-control mb-2" placeholder="Enter name" name="name" value="{{ old('price') }}" />
               <input type="text" class="form-control mb-2" placeholder="Enter type (local or international)" name="type" value="{{ old('type') }}" />
               <input type="text" class="form-control mb-2" placeholder="Enter price" name="price" value="{{ old('price') }}" />
               <input type="submit" class="btn btn-primary" value="Create" />

@@ -9,6 +9,15 @@ use Illuminate\View\View;
 
 class FlightController extends Controller
 {
+    public function index(): View
+    {
+        $viewData = [];
+        $viewData['title'] = 'Flights';
+        $viewData['flights'] = Flight::all();
+
+        return view('flight.index')->with('viewData', $viewData);
+    }
+
     public function create(): View
     {
         $viewData = [];
@@ -21,6 +30,7 @@ class FlightController extends Controller
     {
         Flight::validate($request);
         Flight::create([
+            'name' => $request->name,
             'type' => $request->type,
             'price' => $request->price,
         ]);

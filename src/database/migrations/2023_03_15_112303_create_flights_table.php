@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->enum('type', ['local', 'international']);
+            $table->string('name');
             $table->integer('price');
         });
     }

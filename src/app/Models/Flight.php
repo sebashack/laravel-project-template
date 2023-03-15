@@ -9,7 +9,22 @@ use Illuminate\Validation\Rule;
 
 class Flight extends Model
 {
-    protected $fillable = ['type', 'price'];
+    protected $fillable = ['type', 'price', 'name'];
+
+    public function getId(): int
+    {
+        return $this->attributes['id'];
+    }
+
+    public function getName(): string
+    {
+        return $this->attributes['name'];
+    }
+
+    public function setName(string $type): void
+    {
+        $this->attributes['name'] = $type;
+    }
 
     public function getType(): string
     {
@@ -36,6 +51,7 @@ class Flight extends Model
     {
         $request->validate([
             'price' => ['required', 'integer', 'gte:1'],
+            'name' => ['required', 'min:3', 'max:200'],
             'type' => ['required', Rule::in(['local', 'international'])],
         ]);
     }
