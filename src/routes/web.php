@@ -12,4 +12,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home.index');
+Route::get('/flights/create', 'App\Http\Controllers\FlightController@create')->name('flight.create');
+Route::post('/flights/save', 'App\Http\Controllers\FlightController@save')->name('flight.save');
