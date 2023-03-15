@@ -5,6 +5,6 @@
     <h3>Flight statistics</h3>
     <p>International flights: {{ $viewData['num_international'] }}</p>
     <p>Local flights: {{ $viewData['num_local'] }}</p>
-    <p>Average price: ${{ $viewData['average_price'] }}</p>
+    <p>Average local flight price: ${{ $viewData['average_local_price'] }}</p>
 </div>
 @endsection

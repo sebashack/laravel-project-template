@@ -44,22 +44,27 @@ class FlightController extends Controller
 
         $numLocal = 0;
         $numInternational = 0;
-        $accumPrice = 0;
+        $accumLocalPrice = 0;
 
         foreach ($flights as $v) {
             if ($v->getType() === 'local') {
                 $numLocal = $numLocal + 1;
+                $accumLocalPrice = $accumLocalPrice + $v->getPrice();
             } else {
                 $numInternational = $numInternational + 1;
             }
-            $accumPrice = $accumPrice + $v->getPrice();
         }
 
         $viewData = [];
         $viewData['title'] = 'Flight Statistics';
         $viewData['num_local'] = $numLocal;
         $viewData['num_international'] = $numInternational;
-        $viewData['average_price'] = $accumPrice / count($flights);
+
+        if ($numLocal > 0) {
+            $viewData['average_local_price'] = $accumLocalPrice / $numLocal;
+        } else {
+            $viewData['average_local_price'] = 0;
+        }
 
         return view('flight.stats')->with('viewData', $viewData);
     }
