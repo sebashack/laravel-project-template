@@ -15,9 +15,15 @@
             </ul>
             @endif
 
+            @if (session('status'))
+            <div class="alert alert-success">
+              {{ session('status') }}
+            </div>
+            @endif
+
             <form method="POST" action="{{ route('flight.save') }}">
               @csrf
-              <input type="text" class="form-control mb-2" placeholder="Enter type" name="type" value="{{ old('type') }}" />
+              <input type="text" class="form-control mb-2" placeholder="Enter type (local or international)" name="type" value="{{ old('type') }}" />
               <input type="text" class="form-control mb-2" placeholder="Enter price" name="price" value="{{ old('price') }}" />
               <input type="submit" class="btn btn-primary" value="Create" />
             </form>

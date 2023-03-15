@@ -3,6 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class Flight extends Model
 {
@@ -26,5 +29,14 @@ class Flight extends Model
     public function setPrice(int $price): void
     {
         $this->attributes['price'] = $price;
+    }
+
+    // Validator
+    public static function validate(Request $request): void
+    {
+        $request->validate([
+            'price' => ['required', 'integer', 'gte:1'],
+            'type' => ['required', Rule::in(['local', 'international'])],
+        ]);
     }
 }

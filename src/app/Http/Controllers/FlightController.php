@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Flight;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class FlightController extends Controller
@@ -17,7 +19,7 @@ class FlightController extends Controller
 
     public function save(Request $request): RedirectResponse
     {
-        //Flight::validate($request);
+        Flight::validate($request);
         Flight::create([
             'type' => $request->type,
             'price' => $request->price,
