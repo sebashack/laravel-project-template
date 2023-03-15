@@ -9,6 +9,13 @@ use Illuminate\Validation\Rule;
 
 class Flight extends Model
 {
+    /**
+     * ATTRIBUTES
+     * $this->attributes['id'] - int
+     * $this->attributes['type'] - string
+     * $this->attributes['price'] - int
+     * $this->attributes['name'] - string
+     */
     protected $fillable = ['type', 'price', 'name'];
 
     public function getId(): int
