@@ -13,7 +13,7 @@ class FlightController extends Controller
     {
         $viewData = [];
         $viewData['title'] = 'Flights';
-        $viewData['flights'] = Flight::all();
+        $viewData['flights'] = Flight::orderBy('price', 'asc')->get();
 
         return view('flight.index')->with('viewData', $viewData);
     }

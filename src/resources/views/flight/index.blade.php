@@ -8,8 +8,12 @@
       <div class="card-body text-center">
         <h3>Flight {{ $flight->getId() }}</h3>
         <p> Name: {{ $flight->getName() }}</p>
+        @if($flight->getType() === 'local')
         <p> Type: {{ $flight->getType() }}</p>
-        <p> Price: ${{ $flight->getPrice() }}</p>
+        <p style="color:blue;">Price: ${{ $flight->getPrice() }}</p>
+        @else
+        <strong>Price: ${{ $flight->getPrice() }}</strong>
+        @endif
       </div>
     </div>
   </div>
