@@ -21,6 +21,7 @@
           <a class="nav-link active" href="{{ route('home.index') }}">Home</a>
           <a class="nav-link active" href="{{ route('flight.create') }}">Register flight</a>
           <a class="nav-link active" href="{{ route('flight.index') }}">List flights</a>
+          <a class="nav-link active" href="{{ route('flight.showStats') }}">Flight statistics</a>
         </div>
       </div>
     </div>

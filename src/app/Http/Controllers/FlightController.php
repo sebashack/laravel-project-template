@@ -37,4 +37,30 @@ class FlightController extends Controller
 
         return back()->with('status', 'Successfully created');
     }
+
+    public function showStats(): View
+    {
+        $flights = Flight::all();
+
+        $numLocal = 0;
+        $numInternational = 0;
+        $accumPrice = 0;
+
+        foreach ($flights as $v) {
+            if ($v->getType() === 'local') {
+                $numLocal = $numLocal + 1;
+            } else {
+                $numInternational = $numInternational + 1;
+            }
+            $accumPrice = $accumPrice + $v->getPrice();
+        }
+
+        $viewData = [];
+        $viewData['title'] = 'Flight Statistics';
+        $viewData['num_local'] = $numLocal;
+        $viewData['num_international'] = $numInternational;
+        $viewData['average_price'] = $accumPrice / count($flights);
+
+        return view('flight.stats')->with('viewData', $viewData);
+    }
 }
